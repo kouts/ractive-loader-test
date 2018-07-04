@@ -1,0 +1,10 @@
+# public/.htaccess
+vendor
+uploads
+temp
+app/views/cache
+# app/init/config.php
+node_modules
+sftp-config.json
+.git-ftp.log
+composer.lock
