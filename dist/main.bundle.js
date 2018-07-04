@@ -210,7 +210,7 @@
 
 
 window.ractive = new Ractive({
-    template: '\n        <div class="header clearfix">\n            <h3 class="text-muted">Ractive loader test</h3>\n        </div>\n        <div class="row">\n            <component1 />\n            <component2 />\n        </div>\n        <footer class="footer">\n            <p>&copy; 2018 Footer, Inc.</p>\n        </footer>\n    ',
+    template: '\n        <div class="header clearfix">\n            <h3 class="text-muted">Ractive loader test</h3>\n        </div>\n        <div class="row">\n            <component1>\n                {{#partial async-loading}}{{>loading}}{{/partial}}\n            </component1>\n            <component2 />\n        </div>\n        <footer class="footer">\n            <p>&copy; 2018 Footer, Inc.</p>\n        </footer>\n    ',
     el: '#app',
     components: {
 
@@ -225,6 +225,9 @@ window.ractive = new Ractive({
             return module.default;
         })
 
+    },
+    partials: {
+        'loading': 'Im rendered when MyAsyncComponent is loading'
     },
     oncomplete: function oncomplete() {
         console.log('Ractive instance rendered');

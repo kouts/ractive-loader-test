@@ -1,18 +1,32 @@
 <div class="col-lg-6">
-    <h3>Component 1</h3>
-    <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+    {{#if !loaded}}
+        {{>loading}}
+    {{else}}
+        <h3>Component 1</h3>
+        <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
-    <h4>Subheading</h4>
-    <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+        <h4>Subheading</h4>
+        <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
 
-    <h4>Subheading</h4>
-    <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        <h4>Subheading</h4>
+        <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>        
+    {{/if}}
 </div>
 
 <script>
     export default Ractive.extend({
         isolated: false,
         template: $TEMPLATE,
+        data(){
+            return {
+                loaded: false
+            }
+        },
+        oninit(){
+            $.get("http://query.yahooapis.com/v1/public/yql?q=SELECT * FROM weather.forecast WHERE woeid=950519 AND u='c'&format=json&diagnostics=true&callback=").then(data => {
+                this.set('loaded', true);
+            });
+        },
         oncomplete(){
             console.log('Component 1 rendered');
         }

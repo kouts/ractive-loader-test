@@ -4,7 +4,9 @@ window.ractive = new Ractive({
             <h3 class="text-muted">Ractive loader test</h3>
         </div>
         <div class="row">
-            <component1 />
+            <component1>
+                {{#partial async-loading}}{{>loading}}{{/partial}}
+            </component1>
             <component2 />
         </div>
         <footer class="footer">
@@ -20,7 +22,10 @@ window.ractive = new Ractive({
 
         component1: import(/* webpackChunkName: "component1" */'./components/component1.ractive.html').then(module => module.default),
         component2: import(/* webpackChunkName: "component2" */'./components/component2.ractive.html').then(module => module.default)
-        
+
+    },
+    partials: {
+        'loading': 'Im rendered when MyAsyncComponent is loading'
     },
     oncomplete(){
         console.log('Ractive instance rendered');
