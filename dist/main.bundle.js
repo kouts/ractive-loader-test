@@ -209,21 +209,19 @@
 "use strict";
 
 
+console.log(Ractive.VERSION);
+
 window.ractive = new Ractive({
     template: '\n        <div class="header clearfix">\n            <h3 class="text-muted">Ractive loader test</h3>\n        </div>\n        <div class="row">\n            <component1>\n                {{#partial async-loading}}{{>loading}}{{/partial}}\n            </component1>\n            <component2 />\n        </div>\n        <footer class="footer">\n            <p>&copy; 2018 Footer, Inc.</p>\n        </footer>\n    ',
     el: '#app',
     components: {
 
         // This does not work
-        // component1: import(/* webpackChunkName: "component1" */'./components/component1.ractive.html'),
-        // component2: import(/* webpackChunkName: "component2" */'./components/component2.ractive.html')
+        component1: __webpack_require__.e(/*! import() | component1 */ "component1").then(__webpack_require__.t.bind(null, /*! ./components/component1.ractive.html */ "./components/component1.ractive.html", 7)),
+        component2: __webpack_require__.e(/*! import() | component2 */ "component2").then(__webpack_require__.t.bind(null, /*! ./components/component2.ractive.html */ "./components/component2.ractive.html", 7))
 
-        component1: __webpack_require__.e(/*! import() | component1 */ "component1").then(__webpack_require__.t.bind(null, /*! ./components/component1.ractive.html */ "./components/component1.ractive.html", 7)).then(function (module) {
-            return module.default;
-        }),
-        component2: __webpack_require__.e(/*! import() | component2 */ "component2").then(__webpack_require__.t.bind(null, /*! ./components/component2.ractive.html */ "./components/component2.ractive.html", 7)).then(function (module) {
-            return module.default;
-        })
+        // component1: import(/* webpackChunkName: "component1" */'./components/component1.ractive.html').then(module => module.default),
+        // component2: import(/* webpackChunkName: "component2" */'./components/component2.ractive.html').then(module => module.default)
 
     },
     partials: {

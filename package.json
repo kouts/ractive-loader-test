@@ -8,7 +8,7 @@
     "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^0.1.19",
     "fs": "0.0.1-security",
-    "ractive": "^0.10.4",
+    "ractive": "^0.10.5",
     "ractive-bin-loader": "^1.0.2",
     "ractive-modal": "0.2.1",
     "webpack": "^4.14.0",

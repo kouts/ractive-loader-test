@@ -1,3 +1,5 @@
+console.log(Ractive.VERSION);
+
 window.ractive = new Ractive({
     template: `
         <div class="header clearfix">
@@ -17,11 +19,11 @@ window.ractive = new Ractive({
     components: {
 
         // This does not work
-        // component1: import(/* webpackChunkName: "component1" */'./components/component1.ractive.html'),
-        // component2: import(/* webpackChunkName: "component2" */'./components/component2.ractive.html')
+        component1: import(/* webpackChunkName: "component1" */'./components/component1.ractive.html'),
+        component2: import(/* webpackChunkName: "component2" */'./components/component2.ractive.html')
 
-        component1: import(/* webpackChunkName: "component1" */'./components/component1.ractive.html').then(module => module.default),
-        component2: import(/* webpackChunkName: "component2" */'./components/component2.ractive.html').then(module => module.default)
+        // component1: import(/* webpackChunkName: "component1" */'./components/component1.ractive.html').then(module => module.default),
+        // component2: import(/* webpackChunkName: "component2" */'./components/component2.ractive.html').then(module => module.default)
 
     },
     partials: {
