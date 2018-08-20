@@ -1,5 +1,7 @@
 console.log(Ractive.VERSION);
 
+import Ractive from 'ractive';
+
 window.ractive = new Ractive({
     template: `
         <div class="header clearfix">
